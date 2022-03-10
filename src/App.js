@@ -41,6 +41,15 @@ function App() {
     
   }
 
+  function del(e) {
+    const b = e.target.id
+    console.log(input)
+    console.log(b)
+
+    const newList = input.filter((arra) => arra !== b)
+    setInput(newList)
+  }
+
   /*function (e) {
     //setArray( array=> [ ...array,[input.words,input.dates,input.times]])
     setInput( input=> [ ...input,input])
@@ -100,6 +109,25 @@ function App() {
         <p>{dates}</p>
         <p>{times}</p>
 
+        <div>
+          {input.map((items, inx) =>{
+            return (
+              <div>
+                {items.map((subItems,ix) =>{
+                  return (
+                    <>
+                    <li key={subItems}>{subItems}</li>
+                    <a>X</a>
+                    </>
+                  )
+                })}
+                
+                <button id={items} onClick={e => del(e)}>DEL</button>
+          </div>
+              
+            )
+          })}
+        </div>
 
       </div>
     </div>
