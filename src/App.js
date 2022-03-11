@@ -39,14 +39,14 @@ export default function Notes() {
       <div>
           <form onSubmit={getText}>
               <input value={words} onChange={getValue} ></input>
-              <input type="date" value={words} onChange={getValue} ></input>
-              <input type="time" value={words} onChange={getValue} ></input>
+              <input type="date" value={dates} onChange={getValue} ></input>
+              <input type="time" value={times} onChange={getValue} ></input>
 
           </form>
           
           {addNote.map(notes =>(
               <>
-                  <h1 key={notes.id} id={notes.id} >{notes.name}</h1>
+                  <h1 key={notes.id} id={notes.id} >{notes.name} {notes.id}</h1>
                   <button onClick={() => removeNote(notes.id)}>Click to del</button>
 
               </>
