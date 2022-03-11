@@ -9,6 +9,7 @@ export default function Notes() {
   const [words,setWord] = useState("")
   const [times,setTime] = useState("")
 
+  let T = true
 
   function getWords(e) {
     setWord(e.target.value)
@@ -54,6 +55,8 @@ export default function Notes() {
           <form onSubmit={getText}>
               <input value={words} onChange={getWords} ></input>
               <input type="date" value={dates} onChange={getDates} ></input>
+              <input type="checkbox" ></input>
+
               <input type="time" value={times} onChange={getTimes} ></input>
 
           </form>
