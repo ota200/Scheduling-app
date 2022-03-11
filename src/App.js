@@ -10,8 +10,16 @@ export default function Notes() {
   const [times,setTime] = useState("")
 
 
-  function getValue(e) {
+  function getWords(e) {
     setWord(e.target.value)
+  }
+
+  function getDates(e) {
+    setDate(e.target.value)
+  }  
+  
+  function getTimes(e) {
+    setTime(e.target.value)
   }
 
   function getText(e) {
@@ -19,8 +27,14 @@ export default function Notes() {
       setAddNote([
           ...addNote,
           {
-              id: addNote.length,
-              name: words
+              id:addNote.length,
+              wordsId: addNote.length + words,
+              word: words,
+              datesId: addNote.length + words,
+              date: dates,
+              TimesId: addNote.length + words,
+              time: times
+
           }
       ])
       setWord("")
@@ -38,15 +52,18 @@ export default function Notes() {
   return (
       <div>
           <form onSubmit={getText}>
-              <input value={words} onChange={getValue} ></input>
-              <input type="date" value={dates} onChange={getValue} ></input>
-              <input type="time" value={times} onChange={getValue} ></input>
+              <input value={words} onChange={getWords} ></input>
+              <input type="date" value={dates} onChange={getDates} ></input>
+              <input type="time" value={times} onChange={getTimes} ></input>
 
           </form>
           
           {addNote.map(notes =>(
               <>
-                  <h1 key={notes.id} id={notes.id} >{notes.name} {notes.id}</h1>
+                  <h1 key={notes.wordsId} id={notes.id} >{notes.word} {notes.id}</h1>
+                  <h1 key={notes.datesId} id={notes.id} >{notes.date} {notes.id}</h1>
+                  <h1 key={notes.TimesId} id={notes.id} >{notes.time} {notes.id}</h1>
+
                   <button onClick={() => removeNote(notes.id)}>Click to del</button>
 
               </>
