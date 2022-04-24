@@ -1,8 +1,6 @@
 import '../App.css';
-import Draggable from 'react-draggable';
 import { useState } from 'react';
 
-import Week from './week'
 
 export default function Pop() {
 
@@ -13,10 +11,10 @@ export default function Pop() {
   const [text,setText] = useState("")
 
 
-  function name(e) {
+  function submit(e) {
     e.preventDefault();
 
-    setWord([{
+    setWord(...word, [{
       id: word.length, 
       title: input, 
       words:text,
@@ -31,7 +29,7 @@ export default function Pop() {
 
           <div>
 
-            <form  onSubmit={name} >
+            <form >
               <input id="input"></input>
               <br></br>
               <textarea id="text" onChange={(e)=> setText(e.target.value)}></textarea>
@@ -46,12 +44,12 @@ export default function Pop() {
 
               <br></br>
 
-              <button >Submit</button>
+              <button onClick={submit()} ></button>
 
             </form>
           </div>
           <div>
-            {word.mon}
+            {word.id}
           </div>
       </div>
   );
