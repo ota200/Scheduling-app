@@ -56,18 +56,21 @@ export default function Notes() {
         </form>
       </div>
       <div>
-        <div>
-          {week.map((item, index) => (
-            <div key={index}>
-              <h1>{item.title}</h1>
-              <p>{item.notes}</p>
-              
-            </div>
-          ))}
+      <div>
+            {week.map((item, index) => (
+              <div key={index}>
+                {item.map((c, i) => (
+                  <div key={i}>
+                    <h3>{c.title}</h3>
+                    <h3>{c.notes}</h3>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+          Title:{input}
+          Words:{text}
         </div>
-        Title:{input}
-        Words:{text}
-      </div>
 
     </div>
   );
