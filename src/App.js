@@ -14,17 +14,18 @@ export default function Notes() {
   function submit(e) {
     e.preventDefault();
   
-    setWeek(...week, [{
+    setWeek(week => [...week, [{
       id: week.length, 
       title: input, 
-      words: text
+      notes: text
 
 
   
-    }])
+    }]])
 
 
   }
+  //<input type="submit" onClick={submit} ></input>
   
   return (
     <div >
@@ -32,11 +33,11 @@ export default function Notes() {
       <div>
         <form >
 
-          <input id="input" onChange={(e)=> setInput(e.target.value)} required></input>
+          <input id="input" onChange={(e)=> setInput(e.target.value)} ></input>
 
           <br></br>
 
-          <textarea id="text" onChange={(e)=> setText(e.target.value)} required></textarea>
+          <textarea id="text" onChange={(e)=> setText(e.target.value)} ></textarea>
 
           <br></br>
 
@@ -50,22 +51,23 @@ export default function Notes() {
           <h1>If none of checkboxes clicked its put for everyday automatically</h1>
           <br></br>
 
-          <input type="submit" onClick={submit} required></input>
+          <button onClick={submit}> submit </button>
 
         </form>
       </div>
+      <div>
         <div>
-          <div>
-            {week.map((item, index) => (
-              <div key={index}>
-                <h1>{item.title}</h1>
-  
-              </div>
-            ))}
-          </div>
-          Title:{input}
-          Words:{text}
+          {week.map((item, index) => (
+            <div key={index}>
+              <h1>{item.title}</h1>
+              <p>{item.notes}</p>
+              
+            </div>
+          ))}
         </div>
+        Title:{input}
+        Words:{text}
+      </div>
 
     </div>
   );
